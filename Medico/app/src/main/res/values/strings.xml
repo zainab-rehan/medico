@@ -11,4 +11,6 @@
     <string name="user_email">Email</string>
     <string name="app_image">App Image</string>
     <string name="or_create_a_new_account">or create a new account</string>
+    <string name="sign_up_doctor">Sign Up as Doctor</string>
+    <string name="sign_up_patient">Sign Up as Patient</string>
 </resources>

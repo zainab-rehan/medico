@@ -37,14 +37,14 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.948" />
+        app:layout_constraintVertical_bias="0.955" />
 
     <LinearLayout
         android:id="@+id/sign_up_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="420dp"
+        android:layout_marginTop="320dp"
 
         android:layout_marginEnd="20dp"
         android:background="@drawable/layout_bg"
@@ -141,19 +141,38 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/sign_up"
+        android:id="@+id/sign_up_doc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button_bg"
         android:backgroundTint="#053740"
-        android:text="@string/signup"
+        android:text="@string/sign_up_doctor"
         android:textSize="24sp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_up_info"
-        app:layout_constraintVertical_bias="0.852" />
+        app:layout_constraintVertical_bias="0.94"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/sign_up_pat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_bg"
+        android:backgroundTint="#053740"
+        android:text="@string/sign_up_patient"
+        android:textSize="24sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_info"
+        app:layout_constraintVertical_bias="0.442"
+        tools:visibility="visible" />
 
     <TextView
         android:id="@+id/textView4"
@@ -163,6 +182,18 @@
         android:text="@string/or_create_a_new_account"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sign_in" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="84dp"
+        android:text="or"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_in" />
 
