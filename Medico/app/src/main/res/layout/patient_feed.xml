@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PatientFeed">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/patient_profile_layout"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="#CE2E79B5"
+                android:backgroundTint="#a9d8db"
+                android:fontFamily="cursive"
+                android:paddingLeft="30dp"
+                android:text="@string/app_name"
+                android:textColor="#FFFFFF"
+                android:textSize="50sp"
+                android:textStyle="bold">
+
+            </TextView>>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/layout_bg"
+                android:backgroundTint="#77b0b4">
+                <ImageView
+                    android:id="@+id/doctor_image"
+                    android:layout_width="77dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_height="72dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="13pt" />
+
+                <RelativeLayout
+                    android:layout_width="130dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="50dp">
+
+
+                    <TextView
+                        android:id="@+id/patient_profile_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:textColor="#2A628C"
+                        android:textSize="8pt"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/patient_profile_age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="50dp"
+                        android:textSize="6pt" />
+
+                    <TextView
+                        android:id="@+id/patient_profile_gender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="80dp"
+                        android:textSize="6pt" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/DoctorListView"
+            android:layout_width="402dp"
+            android:layout_height="593dp"
+            android:layout_below="@+id/patient_profile_layout"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp"
+            android:divider="@android:color/transparent"
+
+            android:dividerHeight="10.0sp" />
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,11 @@
 package com.example.medico;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Patient {
+public class Patient implements Serializable {
     private String email;
+    private String age;
     private String id;
     private String name;
     private String password;
@@ -31,11 +33,20 @@ public class Patient {
     public ArrayList<String> getHistory(){return this.history;}
     public ArrayList<Appointment> getApp_list(){return this.app_list;}
 
+    public String getAge() {
+        return age;
+    }
+
     //setters
     public void setEmail(String email){this.email = email;}
     public void setId(String id){this.id = id;}
     public void setName(String name){this.name = name;}
     public void setPassword(String password){this.password = password;}
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
     public void setHistory(ArrayList<String> history){
         if(this.history == null){
             this.history = new ArrayList<String>();

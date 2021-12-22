@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:orientation="horizontal"
+    android:background="@drawable/layout_bg"
+    android:backgroundTint="#ECECEC"
+    >
+
+    <ImageView
+        android:id="@+id/doctor_image"
+        android:layout_width="77dp"
+        android:layout_height="72dp"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="13pt" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingRight="15dp">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_baseline_person_outline_24" />
+
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/ic_baseline_work_outline_24" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="65dp"
+            android:src="@drawable/ic_outline_location_on_24" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="90dp"
+            android:src="@drawable/ic_baseline_event_available_24" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="130dp"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/doctor_name"
+            android:layout_width="174dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:textColor="#2A628C"
+            android:textSize="8pt"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/doctor_specialization"
+            android:layout_width="174dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:textSize="6pt" />
+
+        <TextView
+            android:id="@+id/doctor_location"
+            android:layout_width="174dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:textSize="6pt" />
+
+
+        <TextView
+            android:id="@+id/doctor_availability"
+            android:layout_width="174dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="85dp"
+            android:textSize="6pt" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/book_appointment"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:src="@drawable/ic_baseline_access_time_24">
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:text="Book Appointment"
+                android:textSize="14dp"></TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/call_doctor"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="50dp"
+                android:gravity="center"
+                android:src="@drawable/ic_outline_call_24">
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="50dp"
+                android:text="Call"
+                android:textSize="14dp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/msg_doctor"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="85dp"
+                android:gravity="center"
+                android:src="@drawable/ic_outline_sms_24"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="85dp"
+                android:text="Message"
+                android:textSize="14dp"></TextView>
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>
+
+
