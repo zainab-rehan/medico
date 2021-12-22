@@ -1,15 +1,21 @@
 package com.example.medico;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 
-public class PatientFeed extends AppCompatActivity {
+import javax.annotation.Nullable;
+
+public class PatientFeedFragment extends Fragment {
 
     ListView doctorListView;
     private DAODoctor daoDoctor;
@@ -17,26 +23,28 @@ public class PatientFeed extends AppCompatActivity {
     DoctorsListAdapter adapter;
     Patient current_patient;
 
+    public PatientFeedFragment(Patient p)
+    {
+        current_patient = p;
+    }
+
+    @androidx.annotation.Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        //getting current patient's data from login activity (main activity)
-        Intent i = getIntent();
-        current_patient = (Patient) i.getSerializableExtra("patient");
-
-        setContentView(R.layout.patient_feed);
-        doctorListView = (ListView) findViewById(R.id.DoctorListView);
+    public View onCreateView(@NonNull LayoutInflater inflater, @androidx.annotation.Nullable ViewGroup container, @androidx.annotation.Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.patient_feed_fragment,container,false);
+        doctorListView = (ListView) view.findViewById(R.id.DoctorListView);
         doctors = new ArrayList<Doctor>();
+        Bundle bundle = this.getArguments();
+
+        current_patient = (Patient) bundle.getSerializable("patient");
 
         //placing current patient's data in profile
-        TextView patient_name = (TextView) findViewById(R.id.patient_profile_name);
+        TextView patient_name = (TextView) view.findViewById(R.id.patient_profile_name);
         patient_name.setText(current_patient.getName());
-        TextView patient_age = (TextView) findViewById(R.id.patient_profile_age);
+        TextView patient_age = (TextView) view.findViewById(R.id.patient_profile_age);
         patient_age.setText(current_patient.getAge());
-        TextView patient_gender = (TextView) findViewById(R.id.patient_profile_gender);
+        TextView patient_gender = (TextView) view.findViewById(R.id.patient_profile_gender);
         patient_gender.setText(current_patient.getGender());
-
 
         Doctor d = new Doctor();
         d.setName("Zainab");
@@ -89,8 +97,10 @@ public class PatientFeed extends AppCompatActivity {
         d.setAvailability("Available");
         doctors.add(d);
 
-        adapter = new DoctorsListAdapter(this,doctors);
+        adapter = new DoctorsListAdapter(getActivity(),doctors);
         doctorListView.setAdapter(adapter);
-        //daoDoctor = new DAODoctor();
+
+        return view;
     }
 }
+

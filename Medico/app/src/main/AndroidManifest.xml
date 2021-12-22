@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.medico">
+
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,6 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Medico">
+        <activity
+            android:name=".PatientActivity"
+            android:exported="true">
+
+        </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -19,17 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignupPatActivity">
+        <activity android:name=".SignupPatActivity"></activity>
+        <activity android:name=".SignupDocActivity"></activity>
 
-        </activity>
-        <activity android:name=".SignupDocActivity">
-
-        </activity>
-        <activity
-            android:name=".PatientFeed"
-            android:exported="true">
-
-        </activity>
     </application>
 
 </manifest>

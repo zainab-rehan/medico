@@ -13,7 +13,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/patient_profile_layout"
             tools:ignore="MissingConstraints">
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
@@ -25,7 +24,6 @@
                 android:textColor="#FFFFFF"
                 android:textSize="50sp"
                 android:textStyle="bold">
-
             </TextView>>
 
             <LinearLayout
@@ -49,8 +47,6 @@
                     android:layout_width="77dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="50dp">
-
-
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -60,8 +56,6 @@
                         android:textColor="@color/white"
                         android:textSize="8pt"
                         android:textStyle="bold" />
-
-
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -70,7 +64,6 @@
                         android:text="Age:"
                         android:textColor="@color/white"
                         android:textSize="7pt" />
-
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -79,13 +72,11 @@
                         android:text="Gender:"
                         android:textColor="@color/white"
                         android:textSize="7pt" />
-
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
-
                     <TextView
                         android:id="@+id/patient_profile_name"
                         android:layout_width="match_parent"
@@ -95,8 +86,6 @@
                         android:textColor="@color/white"
                         android:textSize="8pt"
                         android:textStyle="bold" />
-
-
                     <TextView
                         android:id="@+id/patient_profile_age"
                         android:layout_width="match_parent"
@@ -105,7 +94,6 @@
                         android:layout_marginTop="50dp"
                         android:textColor="@color/white"
                         android:textSize="7pt" />
-
                     <TextView
                         android:id="@+id/patient_profile_gender"
                         android:layout_width="match_parent"
@@ -119,6 +107,11 @@
 
         </RelativeLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </LinearLayout>
+
         <ListView
             android:id="@+id/DoctorListView"
             android:layout_width="402dp"
@@ -128,29 +121,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginRight="10dp"
             android:divider="@android:color/transparent"
-
             android:dividerHeight="10.0sp" />
-
     </RelativeLayout>
-
-    <FrameLayout
-        android:id="@+id/flFragment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

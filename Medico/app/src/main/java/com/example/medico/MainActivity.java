@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         p.setGender("Female");
         if(p!=null)
         {
-            Intent i=new Intent(MainActivity.this,PatientFeed.class);
+            Intent i=new Intent(MainActivity.this,PatientActivity.class);
             i.putExtra("patient",  p);
             startActivity(i);
         }
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
                             if(p!=null)
                             {
-                                Intent i=new Intent(MainActivity.this,PatientFeed.class);
+                                Intent i=new Intent(MainActivity.this,PatientActivity.class);
                                 i.putExtra("patient",  p);
                                 startActivity(i);
                             }
