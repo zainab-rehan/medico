@@ -8,6 +8,7 @@ public class Patient implements Serializable {
     private String age;
     private String id;
     private String name;
+    private String gender;
     private String password;
     private ArrayList<String> history;
     private ArrayList<Appointment> app_list;
@@ -32,17 +33,22 @@ public class Patient implements Serializable {
     public String getPassword(){return this.password;}
     public ArrayList<String> getHistory(){return this.history;}
     public ArrayList<Appointment> getApp_list(){return this.app_list;}
-
+    public String getGender() {
+        return gender;
+    }
     public String getAge() {
         return age;
     }
+
 
     //setters
     public void setEmail(String email){this.email = email;}
     public void setId(String id){this.id = id;}
     public void setName(String name){this.name = name;}
     public void setPassword(String password){this.password = password;}
-
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
     public void setAge(String age) {
         this.age = age;
     }

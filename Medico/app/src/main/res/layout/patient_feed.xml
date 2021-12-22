@@ -34,51 +34,87 @@
                 android:layout_marginTop="60dp"
                 android:background="@drawable/layout_bg"
                 android:backgroundTint="#77b0b4">
+
                 <ImageView
                     android:id="@+id/doctor_image"
                     android:layout_width="77dp"
-                    android:layout_marginLeft="20dp"
                     android:layout_height="72dp"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
                     android:gravity="center"
                     android:textColor="@android:color/white"
                     android:textSize="13pt" />
 
                 <RelativeLayout
-                    android:layout_width="130dp"
+                    android:layout_width="77dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="50dp">
 
 
                     <TextView
-                        android:id="@+id/patient_profile_name"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="20dp"
-                        android:textColor="#2A628C"
+                        android:text="Name:"
+                        android:textColor="@color/white"
+                        android:textSize="8pt"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="50dp"
+                        android:text="Age:"
+                        android:textColor="@color/white"
+                        android:textSize="7pt" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="80dp"
+                        android:text="Gender:"
+                        android:textColor="@color/white"
+                        android:textSize="7pt" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/patient_profile_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/white"
                         android:textSize="8pt"
                         android:textStyle="bold" />
 
 
                     <TextView
                         android:id="@+id/patient_profile_age"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="50dp"
-                        android:textSize="6pt" />
+                        android:textColor="@color/white"
+                        android:textSize="7pt" />
 
                     <TextView
                         android:id="@+id/patient_profile_gender"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="80dp"
-                        android:textSize="6pt" />
-
+                        android:textColor="@color/white"
+                        android:textSize="7pt" />
                 </RelativeLayout>
-
             </LinearLayout>
 
         </RelativeLayout>
@@ -94,6 +130,27 @@
             android:divider="@android:color/transparent"
 
             android:dividerHeight="10.0sp" />
+
     </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/flFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

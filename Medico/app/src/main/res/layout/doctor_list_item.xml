@@ -9,17 +9,21 @@
 
     <ImageView
         android:id="@+id/doctor_image"
-        android:layout_width="77dp"
-        android:layout_height="72dp"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
         android:layout_gravity="center_vertical"
         android:gravity="center"
+        android:src="@drawable/doctorsmall"
+        android:paddingRight="12dp"
+        android:paddingLeft="12dp"
         android:textColor="@android:color/white"
         android:textSize="13pt" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:paddingRight="15dp">
+        android:paddingRight="15dp"
+        android:paddingLeft="5dp">
 
         <ImageView
             android:layout_width="15dp"
@@ -39,7 +43,6 @@
         <ImageView
             android:layout_width="15dp"
             android:layout_height="15dp"
-            android:layout_marginStart="5dp"
             android:layout_marginTop="65dp"
             android:src="@drawable/ic_outline_location_on_24" />
 

@@ -60,6 +60,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void signInClicked(){
+        Patient p;
+        p=new Patient();
+        p.setName("zainab");
+        p.setAge("21");
+        p.setId("P1");
+        p.setEmail("zainab@gmail.com");
+        p.setGender("Female");
+        if(p!=null)
+        {
+            Intent i=new Intent(MainActivity.this,PatientFeed.class);
+            i.putExtra("patient",  p);
+            startActivity(i);
+        }
+
         dao.authenticate(userId.getText().toString(),password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
@@ -80,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                             if(p!=null)
                             {
                                 Intent i=new Intent(MainActivity.this,PatientFeed.class);
-                                i.putExtra("patient", (Parcelable) p);
+                                i.putExtra("patient",  p);
                                 startActivity(i);
                             }
                         }
