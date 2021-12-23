@@ -16,12 +16,16 @@ public class Doctor implements Serializable {
 
     private void init(){}
     public Doctor(){}
-    public Doctor(String email, String id, String name, String password, String specialization){
+    public Doctor(String email, String id, String name, String password, String specialization, String location,String contact){
         this.email = email;
         this.id = id;
         this.name = name;
         this.password = password;
         this.specialization = specialization;
+        this.location = location;
+        this.contact = contact;
+        this.app_list = new ArrayList<Appointment>();
+        this.availability = "Available";
     }
 
     //getters
@@ -30,15 +34,9 @@ public class Doctor implements Serializable {
     public String getName(){return this.name;}
     public String getPassword(){return this.password;}
     public String getSpecialization(){return this.specialization;}
-    public String getContact() {
-        return contact;
-    }
-    public String getLocation() {
-        return location;
-    }
-    public String getAvailability() {
-        return availability;
-    }
+    public String getContact() { return contact; }
+    public String getLocation() { return location; }
+    public String getAvailability() { return availability; }
     public ArrayList<Appointment> getApp_list(){return this.app_list;}
 
 
@@ -50,8 +48,11 @@ public class Doctor implements Serializable {
     public void setLocation(String location) {
         this.location = location;
     }
-    public void setAvailability(String availability) {
-        this.availability = availability;
+    public void setUnavailable() {
+        this.availability = "Not Available";
+    }
+    public void setAvailable() {
+        this.availability = "Available";
     }
     public void setSpecialization(String specialization){this.specialization = specialization;}
     public void setContact(String contact) {

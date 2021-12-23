@@ -142,8 +142,8 @@
 
     <Button
         android:id="@+id/sign_up_doc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="355dp"
+        android:layout_height="69dp"
         android:background="@drawable/button_bg"
         android:backgroundTint="#053740"
         android:text="@string/sign_up_doctor"
@@ -159,8 +159,8 @@
 
     <Button
         android:id="@+id/sign_up_pat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="354dp"
+        android:layout_height="68dp"
         android:background="@drawable/button_bg"
         android:backgroundTint="#053740"
         android:text="@string/sign_up_patient"
@@ -168,17 +168,18 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_up_info"
-        app:layout_constraintVertical_bias="0.442"
+        app:layout_constraintVertical_bias="0.509"
         tools:visibility="visible" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="16dp"
         android:text="@string/or_create_a_new_account"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
@@ -189,8 +190,8 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="196dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginStart="192dp"
+        android:layout_marginTop="132dp"
         android:text="or"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -210,5 +211,5 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sign_up_info"
-        app:layout_constraintVertical_bias="0.047" />
+        app:layout_constraintVertical_bias="0.07" />
 </androidx.constraintlayout.widget.ConstraintLayout>

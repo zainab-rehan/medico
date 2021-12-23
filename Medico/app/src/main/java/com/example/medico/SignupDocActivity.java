@@ -26,15 +26,18 @@ public class SignupDocActivity extends AppCompatActivity {
         EditText name = findViewById(R.id.name_input);
         EditText password = findViewById(R.id.password_input);
         EditText spec = findViewById(R.id.specialization_input);
+        EditText location = findViewById(R.id.location_input);
+        EditText contact = findViewById(R.id.contact_input);
         Button signup = findViewById(R.id.sign_up_doc);
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Doctor d = new Doctor(email.getText().toString(), userId.getText().toString(), name.getText().toString(),password.getText().toString(), spec.getText().toString());
+                Doctor d = new Doctor(email.getText().toString(), userId.getText().toString(), name.getText().toString(),password.getText().toString(),
+                        spec.getText().toString(),location.getText().toString(),contact.getText().toString());
                 daoDoctor = new DAODoctor();
-                daoDoctor.addPatientData(d).addOnCompleteListener(new OnCompleteListener<Void>() {
+                daoDoctor.addDoctorData(d).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull @NotNull Task<Void> task) {
                         if (task.isSuccessful())

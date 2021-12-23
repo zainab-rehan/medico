@@ -8,20 +8,23 @@ public class Patient implements Serializable {
     private String age;
     private String id;
     private String name;
-    private String gender;
+    private String contact;
     private String password;
+    private String gender;
     private ArrayList<String> history;
     private ArrayList<Appointment> app_list;
 
     private void init(){}
     public Patient(){}
-    public Patient(String email,String id, String name, String password){
+    public Patient(String email,String id, String name, String password, String age, String contact,String gender){
         this.email = email;
         this.id = id;
         this.name = name;
         this.password = password;
-        this.history = new ArrayList<>(1);
-        this.history.add("History");
+        this.age = age;
+        this.contact = contact;
+        this.gender = gender;
+        this.history = new ArrayList<String>();
         this.app_list = new ArrayList<Appointment>(0);
 
     }
@@ -33,11 +36,14 @@ public class Patient implements Serializable {
     public String getPassword(){return this.password;}
     public ArrayList<String> getHistory(){return this.history;}
     public ArrayList<Appointment> getApp_list(){return this.app_list;}
-    public String getGender() {
-        return gender;
-    }
     public String getAge() {
         return age;
+    }
+    public String getContact() {
+        return contact;
+    }
+    public String getGender() {
+        return gender;
     }
 
 
@@ -46,11 +52,14 @@ public class Patient implements Serializable {
     public void setId(String id){this.id = id;}
     public void setName(String name){this.name = name;}
     public void setPassword(String password){this.password = password;}
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
     public void setAge(String age) {
         this.age = age;
+    }
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public void setHistory(ArrayList<String> history){

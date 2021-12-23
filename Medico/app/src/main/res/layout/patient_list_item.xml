@@ -44,7 +44,7 @@
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_marginTop="65dp"
-            android:src="@drawable/ic_outline_location_on_24"
+            android:src="@drawable/ic_baseline_person_outline_24"
             android:translationX="5dp" />
 
         <ImageView
@@ -52,7 +52,7 @@
             android:layout_height="15dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="90dp"
-            android:src="@drawable/ic_baseline_event_available_24" />
+            android:src="@drawable/emailsmall" />
 
     </RelativeLayout>
 
@@ -63,7 +63,7 @@
 
 
         <TextView
-            android:id="@+id/doctor_name"
+            android:id="@+id/patient_name"
             android:layout_width="174dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -74,7 +74,7 @@
 
 
         <TextView
-            android:id="@+id/doctor_specialization"
+            android:id="@+id/patient_age"
             android:layout_width="174dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -82,7 +82,7 @@
             android:textSize="6pt" />
 
         <TextView
-            android:id="@+id/doctor_location"
+            android:id="@+id/patient_gender"
             android:layout_width="174dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -91,7 +91,7 @@
 
 
         <TextView
-            android:id="@+id/doctor_availability"
+            android:id="@+id/patient_email"
             android:layout_width="174dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

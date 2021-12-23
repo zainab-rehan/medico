@@ -22,14 +22,8 @@ public class DAODoctor {
         return mAuth.createUserWithEmailAndPassword(d.getId(),d.getPassword());
     }
 
-    public Task<Void> addPatientData(Doctor d)
+    public Task<Void> addDoctorData(Doctor d)
     {
-        HashMap<String,Object> map=new HashMap<>();
-        map.put("name",d.getName());
-        map.put("email",d.getEmail());
-        map.put("userId",d.getId());
-        map.put("specialization",d.getSpecialization());
-        map.put("appointment",d.getApp_list());
 
         return db.collection("Doctor").document(d.getId()).set(d);
     }

@@ -11,7 +11,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Nullable;
 
@@ -22,6 +28,7 @@ public class PatientFeedFragment extends Fragment {
     ArrayList<Doctor> doctors;
     DoctorsListAdapter adapter;
     Patient current_patient;
+    FirebaseFirestore db;
 
     public PatientFeedFragment(Patient p)
     {
@@ -31,7 +38,7 @@ public class PatientFeedFragment extends Fragment {
     @androidx.annotation.Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @androidx.annotation.Nullable ViewGroup container, @androidx.annotation.Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.patient_feed_fragment,container,false);
+        View view = inflater.inflate(R.layout.patient_feed_fragment, container, false);
         doctorListView = (ListView) view.findViewById(R.id.DoctorListView);
         doctors = new ArrayList<Doctor>();
         Bundle bundle = this.getArguments();
@@ -46,59 +53,22 @@ public class PatientFeedFragment extends Fragment {
         TextView patient_gender = (TextView) view.findViewById(R.id.patient_profile_gender);
         patient_gender.setText(current_patient.getGender());
 
-        Doctor d = new Doctor();
-        d.setName("Zainab");
-        d.setId("D3");
-        d.setEmail("zainab@gmail.com");
-        d.setLocation("Lahore");
-        d.setContact("03008927162");
-        d.setSpecialization("Child Specialist");
-        d.setAvailability("Available");
 
-        doctors.add(d);
-
-        d=new Doctor();
-        d.setName("Bayyana");
-        d.setId("D4");
-        d.setEmail("bayyana@gmail.com");
-        d.setLocation("Islamabad");
-        d.setContact("03007355512");
-        d.setSpecialization("Dermatology");
-        d.setAvailability("Available");
-        doctors.add(d);
-
-        d=new Doctor();
-        d.setName("Amna");
-        d.setId("D5");
-        d.setEmail("amna@gmail.com");
-        d.setLocation("Lahore");
-        d.setContact("03009288371");
-        d.setSpecialization("Cardiology");
-        d.setAvailability("Not Available");
-        doctors.add(d);
-
-        d=new Doctor();
-        d.setName("Hasan");
-        d.setId("D6");
-        d.setEmail("hasan@gmail.com");
-        d.setLocation("Karachi");
-        d.setContact("03002938173");
-        d.setSpecialization("Child Specialist");
-        d.setAvailability("Not Available");
-        doctors.add(d);
-
-        d=new Doctor();
-        d.setName("Alina");
-        d.setId("D7");
-        d.setEmail("alina@gmail.com");
-        d.setLocation("Lahore");
-        d.setContact("03029163711");
-        d.setSpecialization("Child Specialist");
-        d.setAvailability("Available");
-        doctors.add(d);
-
-        adapter = new DoctorsListAdapter(getActivity(),doctors);
+        adapter = new DoctorsListAdapter(getActivity(), doctors);
         doctorListView.setAdapter(adapter);
+        //loading doctor data from the database
+        db = FirebaseFirestore.getInstance();
+        db.collection("Doctor").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+                for (DocumentSnapshot ds : list) {
+                    Doctor d = ds.toObject(Doctor.class);
+                    doctors.add(d);
+                }
+                adapter.notifyDataSetChanged();
+            }
+        });
 
         return view;
     }

@@ -27,13 +27,17 @@ public class SignupPatActivity extends AppCompatActivity {
         EditText userId = findViewById(R.id.user_id_input);
         EditText name = findViewById(R.id.name_input);
         EditText password = findViewById(R.id.password_input);
+        EditText age = findViewById(R.id.age_input);
+        EditText contact = findViewById(R.id.contact_input);
+        EditText gender = findViewById(R.id.gender_input);
         Button signup = findViewById(R.id.sign_up_doc);
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                    Patient p = new Patient(email.getText().toString(), userId.getText().toString(), name.getText().toString(),password.getText().toString());
+                Patient p = new Patient(email.getText().toString(), userId.getText().toString(), name.getText().toString(),
+                        password.getText().toString(), age.getText().toString(),contact.getText().toString(), gender.getText().toString());
                     daoPatient = new DAOPatient();
                     daoPatient.addPatientData(p).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
