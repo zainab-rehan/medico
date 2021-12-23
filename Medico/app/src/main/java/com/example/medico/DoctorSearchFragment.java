@@ -73,7 +73,7 @@ public class DoctorSearchFragment extends Fragment {
             }
         });
 
-        adapter = new DoctorsListAdapter(getActivity(),doctors);
+        adapter = new DoctorsListAdapter(getActivity(),doctors,current_patient);
         search_doctorlistview.setAdapter(adapter);
         return view;
     }

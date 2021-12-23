@@ -1,60 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
-    android:orientation="horizontal"
+    android:layout_height="match_parent"
     android:background="@drawable/layout_bg"
     android:backgroundTint="#ECECEC"
-    android:padding="10dp"
-    >
+    android:orientation="horizontal"
+    android:padding="10dp">
 
 
-    <RelativeLayout
-        android:layout_width="127dp"
-        android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/add_history"
+        android:layout_width="273dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="104dp"
+        android:text="Add History"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="393dp"
+        android:layout_height="531dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
-        <TextView
-            android:layout_width="174dp"
+        <RelativeLayout
+            android:layout_width="127dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="Date:"
-            android:textColor="#2A628C"
-            android:textSize="8pt" />
+            android:translationY="-220dp">
 
-        <TextView
-            android:layout_width="174dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            android:text="Symptoms:"
-            android:textColor="#2A628C"
-            android:textSize="7pt" />
 
-    </RelativeLayout>
+            <TextView
+                android:layout_width="174dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="History:"
+                android:textColor="#2A628C"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-    <RelativeLayout
-        android:layout_width="244dp"
-        android:layout_height="match_parent">
+        </RelativeLayout>
 
-        <TextView
-            android:id="@+id/patient_history_date"
+        <EditText
+            android:id="@+id/history_input"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:textColor="#2A628C"
-            android:textSize="8pt" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-        <TextView
-            android:id="@+id/patient_history_symptoms"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            android:textColor="#2A628C"
-            android:textSize="7pt" />
 
-    </RelativeLayout>
-</LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

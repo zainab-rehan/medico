@@ -20,6 +20,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.google.android.gms.common.internal.Objects;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
 
 import java.util.ArrayList;
 
@@ -28,11 +30,14 @@ public class DoctorsListAdapter extends ArrayAdapter<Doctor> implements Filterab
     private ArrayList<Doctor> doctors;
     private ArrayList<Doctor> filteredDoctors;
     private Filter filter;
+    private Patient curr_patient;
 
-    public DoctorsListAdapter(Context context, ArrayList<Doctor> doctors){
+    public DoctorsListAdapter(Context context, ArrayList<Doctor> doctors, Patient curr_patient){
         super(context,0,doctors);
         this.doctors = doctors;
         this.filteredDoctors = doctors;
+        //added this current patient variable
+        this.curr_patient = curr_patient;
 
     }
 
@@ -105,7 +110,23 @@ public class DoctorsListAdapter extends ArrayAdapter<Doctor> implements Filterab
                 }
             }
         });
-
+        //adding the appointments in the database-----------------
+        ImageView book_app = (ImageView) convertView.findViewById(R.id.book_appointment);
+        book_app.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(availability.getText().equals("Available") == true)
+                {
+                    addAppointment(doctor);
+                }
+                else if(availability.getText().equals("Not Available") == true)
+                {
+                    Toast toast = new Toast(getContext());
+                    toast.setText("Doctor is not available!");
+                    toast.show();
+                }
+            }
+        });
 
 
         return convertView;
@@ -148,4 +169,49 @@ public class DoctorsListAdapter extends ArrayAdapter<Doctor> implements Filterab
             notifyDataSetChanged();
         }
     }
+
+    public void addAppointment(Doctor doctor)
+    {
+        String patId = curr_patient.getId();
+        String docId = doctor.getId();
+        String date = "24/12/21";
+        String time = "12:45pm";
+        String id = "a1";
+        Appointment a = new Appointment(id,date,time,docId,patId);
+        DAOAppointment daoAppointment = new DAOAppointment();
+        //here one row will be added to the appointment class
+        daoAppointment.addAppointmentData(a).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
+                //one appointment will be added to the app_list of the doctor as well as the patient
+                doctor.addApp(a);
+                curr_patient.addApp(a);
+                DAODoctor daoDoctor = new DAODoctor();
+                daoDoctor.addDoctorApp(doctor).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast toast = new Toast(getContext());
+                        toast.setText("Doctor Appointment list updated!!");
+                        toast.show();
+
+                    }
+                });
+
+                DAOPatient daoPatient = new DAOPatient();
+                daoPatient.addPatientApp(curr_patient).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast toast = new Toast(getContext());
+                        toast.setText("Patient Appointment list updated!!");
+                        toast.show();
+
+                    }
+                });
+                Toast toast = new Toast(getContext());
+                toast.setText("Appointment added!");
+                toast.show();
+            }
+        });
+    }
+
 }

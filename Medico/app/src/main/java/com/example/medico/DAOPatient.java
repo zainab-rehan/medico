@@ -4,6 +4,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 
@@ -32,5 +33,13 @@ public class DAOPatient {
         map.put("appointment",p.getApp_list());
 
         return db.collection("Patient").document(p.getId()).set(p);
+    }
+    public Task<Void> addPatientApp(Patient p)
+    {
+        return db.collection("Patient").document(p.getId()).set(p);
+    }
+    public Task<QuerySnapshot> getHistory(String id)
+    {
+        return db.collection("Doctor").whereEqualTo("id", id).get();
     }
 }

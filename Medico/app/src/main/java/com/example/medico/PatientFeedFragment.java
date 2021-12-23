@@ -53,7 +53,7 @@ public class PatientFeedFragment extends Fragment {
         patient_gender.setText(current_patient.getGender());
 
 
-        adapter = new DoctorsListAdapter(getActivity(), doctors);
+        adapter = new DoctorsListAdapter(getActivity(), doctors, current_patient);
         doctorListView.setAdapter(adapter);
 
         //loading doctor data from the database

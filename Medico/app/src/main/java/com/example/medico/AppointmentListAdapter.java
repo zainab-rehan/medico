@@ -12,7 +12,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class AppointmentListAdapter extends ArrayAdapter<Appointment> {
     private ArrayList<Appointment> appointments;
@@ -29,8 +34,8 @@ public class AppointmentListAdapter extends ArrayAdapter<Appointment> {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.appointment_list_item,parent,false);
         }
-
-   /*     Doctor doctor = appointment.getDoctor();
+        String docId = appointment.getDocId();
+        Doctor doctor = getDoctor(docId);
 
         TextView name = (TextView) convertView.findViewById(R.id.appt_doctor_name);
         name.setText(doctor.getName());
@@ -67,9 +72,26 @@ public class AppointmentListAdapter extends ArrayAdapter<Appointment> {
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     getContext().startActivity(intent);
             }
-        });*/
+        });
 
         return convertView;
+    }
+
+    public Doctor getDoctor(String id)
+    {
+        final Doctor[] d = new Doctor[1];
+        DAODoctor daoDoctor = new DAODoctor();
+        daoDoctor.getDoctor(id).addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+                for (DocumentSnapshot ds : list) {
+                    d[0] = ds.toObject(Doctor.class);
+                }
+
+            }
+        });
+        return d[0];
     }
 
 }

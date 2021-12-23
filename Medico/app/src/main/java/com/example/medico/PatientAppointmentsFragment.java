@@ -27,6 +27,7 @@ public class PatientAppointmentsFragment extends Fragment {
     AppointmentListAdapter adapter;
     Patient current_patient;
     FirebaseFirestore db;
+    DAOAppointment daoAppointment;
 
     @androidx.annotation.Nullable
     @Override
@@ -36,10 +37,23 @@ public class PatientAppointmentsFragment extends Fragment {
 
         current_patient = (Patient) bundle.getSerializable("patient");
         appointmentListView = (ListView) view.findViewById(R.id.AppointmentsListView) ;
-      //  adapter = new AppointmentListAdapter(getActivity(), appointments);
-       // appointmentListView.setAdapter(adapter);
+        adapter = new AppointmentListAdapter(getActivity(), appointments);
+        appointmentListView.setAdapter(adapter);
 
-        //loading appointments data from the database
+        //loading appointments data from the database of this patient
+        daoAppointment = new DAOAppointment();
+        daoAppointment.getAppPat(current_patient.getId()).addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+                for (DocumentSnapshot ds : list) {
+                    Appointment a = ds.toObject(Appointment.class);
+                    appointments.add(a);
+                }
+                adapter.notifyDataSetChanged();
+            }
+        });
+
 
         return view;
     }

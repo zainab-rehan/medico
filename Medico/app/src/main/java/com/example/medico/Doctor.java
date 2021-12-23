@@ -65,5 +65,12 @@ public class Doctor implements Serializable {
         }
         this.app_list = app_list;
     }
+    public void addApp(Appointment a)
+    {
+        if(this.app_list == null){
+            this.app_list = new ArrayList<Appointment>();
+        }
+        this.app_list.add(a);
+    }
 
 }
