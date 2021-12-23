@@ -85,8 +85,8 @@ public class DoctorsListAdapter extends ArrayAdapter<Doctor> implements Filterab
             }
         });
 
-        ImageView msg_donor = (ImageView) convertView.findViewById(R.id.msg_doctor);
-        msg_donor.setOnClickListener(new View.OnClickListener() {
+        ImageView msg_doctor = (ImageView) convertView.findViewById(R.id.msg_doctor);
+        msg_doctor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(availability.getText().equals("Available") == true)

@@ -24,7 +24,6 @@ import javax.annotation.Nullable;
 public class PatientFeedFragment extends Fragment {
 
     ListView doctorListView;
-    private DAODoctor daoDoctor;
     ArrayList<Doctor> doctors;
     DoctorsListAdapter adapter;
     Patient current_patient;
@@ -56,6 +55,7 @@ public class PatientFeedFragment extends Fragment {
 
         adapter = new DoctorsListAdapter(getActivity(), doctors);
         doctorListView.setAdapter(adapter);
+
         //loading doctor data from the database
         db = FirebaseFirestore.getInstance();
         db.collection("Doctor").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {

@@ -11,8 +11,14 @@
         android:title="Search">
     </item>
     <item
+        android:id="@+id/patient_appointments"
+        android:icon="@drawable/ic_outline_history_24"
+        android:title="Appointments">
+    </item>
+    <item
         android:id="@+id/patient_history"
         android:icon="@drawable/ic_outline_history_24"
         android:title="Medical History">
     </item>
+
 </menu>

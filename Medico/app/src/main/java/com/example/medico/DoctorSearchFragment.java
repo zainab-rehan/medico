@@ -13,6 +13,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,16 +26,35 @@ public class DoctorSearchFragment extends Fragment {
     ListView search_doctorlistview;
     DoctorsListAdapter adapter;
     ArrayList<Doctor> doctors;
+    Patient current_patient;
+    FirebaseFirestore db;
 
     @androidx.annotation.Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @androidx.annotation.Nullable ViewGroup container, @androidx.annotation.Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.doctor_search_fragment,container,false);
+        Bundle bundle = this.getArguments();
+
+        current_patient = (Patient) bundle.getSerializable("patient");
+
         search_doctorlistview = (ListView) view.findViewById(R.id.search_doctorlistview);
         search_doctor = (EditText) view.findViewById(R.id.search_doctor);
         doctors = new ArrayList<Doctor>();
 
        //retrieve doctors' data from database
+        db = FirebaseFirestore.getInstance();
+        db.collection("Doctor").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
+                for (DocumentSnapshot ds : list) {
+                    Doctor d = ds.toObject(Doctor.class);
+                    doctors.add(d);
+                }
+                adapter.notifyDataSetChanged();
+            }
+        });
+
 
         search_doctor.addTextChangedListener(new TextWatcher() {
             @Override

@@ -7,16 +7,6 @@
     android:backgroundTint="#ECECEC"
     >
 
-    <ImageView
-        android:id="@+id/patient_image"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_gravity="center_vertical"
-        android:gravity="center"
-        android:paddingRight="12dp"
-        android:paddingLeft="12dp"
-        android:textColor="@android:color/white"
-        android:textSize="13pt" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -43,9 +33,15 @@
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_marginTop="65dp"
-            android:src="@drawable/emailsmall"
+            android:src="@drawable/ic_outline_location_on_24"
             android:translationX="5dp" />
 
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="90dp"
+            android:src="@drawable/ic_baseline_event_available_24" />
 
     </RelativeLayout>
 
@@ -56,7 +52,7 @@
 
 
         <TextView
-            android:id="@+id/appt_patient_name"
+            android:id="@+id/appt_doctor_name"
             android:layout_width="174dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -65,25 +61,30 @@
             android:textSize="8pt"
             android:textStyle="bold" />
 
-
         <TextView
-            android:id="@+id/appt_patient_date"
+            android:id="@+id/appt_doctor_specialization"
             android:layout_width="174dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
-            android:hint="appt date"
             android:textSize="6pt" />
 
         <TextView
-            android:id="@+id/appt_patient_time"
+            android:id="@+id/appt_date"
             android:layout_width="174dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:hint="appt time"
             android:layout_marginTop="60dp"
             android:textSize="6pt" />
 
+
+        <TextView
+            android:id="@+id/appt_time"
+            android:layout_width="174dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="85dp"
+            android:textSize="6pt" />
 
     </RelativeLayout>
 
@@ -96,7 +97,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/cancel_appointment_doctor"
+                android:id="@+id/cancel_appointment_patient"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="15dp"
@@ -120,7 +121,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/call_patient"
+                android:id="@+id/call_doctor"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="50dp"
@@ -143,7 +144,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/msg_patient"
+                android:id="@+id/msg_doctor"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="85dp"

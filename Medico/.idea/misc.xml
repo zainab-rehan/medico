@@ -20,14 +20,20 @@
         <entry key="..\:/FAST/SEMESTER-7/SMD-A/Project/medico_git/medico/Medico/app/src/main/res/layout/sign_up_doctor.xml" value="0.21" />
         <entry key="..\:/Users/amna/Documents/GitHub/medico/Medico/app/src/main/res/drawable/ic_baseline_access_time_24.xml" value="0.2703125" />
         <entry key="..\:/Users/amna/Documents/GitHub/medico/Medico/app/src/main/res/drawable/ic_baseline_person_outline_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/amna/Documents/GitHub/medico/Medico/app/src/main/res/drawable/ic_baseline_person_search_24.xml" value="0.18229166666666666" />
+        <entry key="..\:/Users/amna/Documents/GitHub/medico/Medico/app/src/main/res/layout/activity_doctor.xml" value="0.2" />
         <entry key="..\:/Users/amna/Documents/GitHub/medico/Medico/app/src/main/res/layout/activity_login.xml" value="0.1634963768115942" />
         <entry key="..\:/Users/amna/Documents/GitHub/medico/Medico/app/src/main/res/layout/activity_main.xml" value="0.1634963768115942" />
         <entry key="..\:/Users/amna/Documents/GitHub/medico/Medico/app/src/main/res/layout/activity_patient.xml" value="0.20244565217391305" />
+        <entry key="..\:/Users/amna/Documents/GitHub/medico/Medico/app/src/main/res/layout/appointment_list_item.xml" value="0.4" />
+        <entry key="..\:/Users/amna/Documents/GitHub/medico/Medico/app/src/main/res/layout/appointments_fragment.xml" value="0.21603260869565216" />
         <entry key="..\:/Users/amna/Documents/GitHub/medico/Medico/app/src/main/res/layout/doctor_list_item.xml" value="0.1634963768115942" />
         <entry key="..\:/Users/amna/Documents/GitHub/medico/Medico/app/src/main/res/layout/doctor_search_fragment.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/amna/Documents/GitHub/medico/Medico/app/src/main/res/layout/fragment_patient_feed.xml" value="0.20244565217391305" />
         <entry key="..\:/Users/amna/Documents/GitHub/medico/Medico/app/src/main/res/layout/patient_feed.xml" value="0.1634963768115942" />
         <entry key="..\:/Users/amna/Documents/GitHub/medico/Medico/app/src/main/res/layout/patient_feed_fragment.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/amna/Documents/GitHub/medico/Medico/app/src/main/res/layout/patient_history_fragment.xml" value="0.21603260869565216" />
+        <entry key="..\:/Users/amna/Documents/GitHub/medico/Medico/app/src/main/res/layout/patient_list_item.xml" value="0.2" />
         <entry key="..\:/Users/amna/Documents/GitHub/medico/Medico/app/src/main/res/layout/patient_menu.xml" value="0.20244565217391305" />
         <entry key="..\:/Users/amna/Documents/GitHub/medico/Medico/app/src/main/res/menu/patient_menu.xml" value="0.25416666666666665" />
       </map>
