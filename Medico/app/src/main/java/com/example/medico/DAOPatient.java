@@ -20,8 +20,9 @@ public class DAOPatient {
 
     public Task<AuthResult> addPatient(Patient p)
     {
-        return mAuth.createUserWithEmailAndPassword(p.getId(),p.getPassword());
+        return mAuth.createUserWithEmailAndPassword(p.getEmail(),p.getPassword());
     }
+
 
     public Task<Void> addPatientData(Patient p)
     {

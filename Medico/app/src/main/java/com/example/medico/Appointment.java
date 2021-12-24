@@ -8,23 +8,32 @@ public class Appointment {
     private String time;
     private String docId;
     private String patId;
+    private String docName;
+    private String docSpec;
+    private String docContact;
 
     public Appointment(){}
-    public Appointment(String id,String date, String time, String docId, String patId)
+    public Appointment(String id, String date, String time, String docId, String patId,String docName,String docSpec, String docContact)
     {
         this.id = id;
         this.date = date;
         this.time = time;
         this.docId = docId;
         this.patId = patId;
+        this.docName = docName;
+        this.docSpec = docSpec;
+        this.docContact = docContact;
     }
-    public void setAppointment(String id, String date, String time, String docId, String patId)
+    public void setAppointment(String id, String date, String time, String docId, String patId,String docName,String docSpec, String docContact)
     {
         this.id = id;
         this.date = date;
         this.time = time;
         this.docId = docId;
         this.patId = patId;
+        this.docName = docName;
+        this.docSpec = docSpec;
+        this.docContact = docContact;
     }
 
     //getters
@@ -46,7 +55,29 @@ public class Appointment {
 
     public String getId(){return this.id;}
 
-    //getter function for getting a doctor's details thru the docID (database)
+    public String getDocName() {
+        return docName;
+    }
+
+    public void setDocName(String docName) {
+        this.docName = docName;
+    }
+
+    public String getDocSpec() {
+        return docSpec;
+    }
+
+    public void setDocSpec(String docSpec) {
+        this.docSpec = docSpec;
+    }
+
+    public String getDocContact() {
+        return docContact;
+    }
+
+    public void setDocContact(String docContact) {
+        this.docContact = docContact;
+    }
 
     //setters
 

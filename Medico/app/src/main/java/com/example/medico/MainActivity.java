@@ -19,7 +19,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText userId;
+    private EditText userEmail;
     private EditText password;
     private DAOSignin dao;
 
@@ -31,9 +31,10 @@ public class MainActivity extends AppCompatActivity {
         Button signIn = findViewById(R.id.sign_in);
         Button signUpPat = findViewById(R.id.sign_up_pat);
         Button signUpDoc = findViewById(R.id.sign_up_doc);
-        userId=findViewById(R.id.user_id_input);
-        password=findViewById(R.id.password_input);
+        userEmail = findViewById(R.id.user_email_input);
+        password = findViewById(R.id.password_input);
 
+        //sign up patient
         signUpPat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        //sign up doctor
         signUpDoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,42 +57,24 @@ public class MainActivity extends AppCompatActivity {
                 signInClicked();
             }
         });
-
-        dao = new DAOSignin();
     }
 
     public void signInClicked(){
-        Patient p;
-        p=new Patient();
-        p.setName("zainab");
-        p.setAge("21");
-        p.setId("P1");
-        p.setEmail("zainab@gmail.com");
-        p.setGender("Female");
-        if(p!=null)
-        {
-            Intent i=new Intent(MainActivity.this,PatientActivity.class);
-            i.putExtra("patient",  p);
-            startActivity(i);
-        }
-
-        dao.authenticate(userId.getText().toString(),password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        dao = new DAOSignin();
+        dao.authenticate(userEmail.getText().toString(),password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
                 if (task.isSuccessful())
                 {
+                    //checking if a patient signed in
                     dao.checkPatient().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
-
                             Patient p = null;
-
                             for(DocumentSnapshot d:task.getResult())
                             {
-                                p=d.toObject(Patient.class);
-                                p.setId(d.getId());
+                                p = d.toObject(Patient.class);
                             }
-
                             if(p!=null)
                             {
                                 Intent i=new Intent(MainActivity.this,PatientActivity.class);
@@ -99,22 +83,18 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                     });
-
+                    //checking if a doctor signed in
                     dao.checkDoctor().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
-
                             Doctor doctor = null;
-
                             for(DocumentSnapshot d:task.getResult())
                             {
                                 doctor = d.toObject(Doctor.class);
-                                doctor.setId(d.getId());
                             }
-
                             if(doctor!=null)
                             {
-                                Intent i=new Intent(MainActivity.this, DoctorFeed.class);
+                                Intent i=new Intent(MainActivity.this, DoctorActivity.class);
                                 i.putExtra("doctor", (Parcelable) doctor);
                                 startActivity(i);
                             }
@@ -127,8 +107,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
-
 }

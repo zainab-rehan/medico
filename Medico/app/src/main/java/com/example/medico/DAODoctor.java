@@ -20,7 +20,7 @@ public class DAODoctor {
 
     public Task<AuthResult> addDoctor(Doctor d)
     {
-        return mAuth.createUserWithEmailAndPassword(d.getId(),d.getPassword());
+        return mAuth.createUserWithEmailAndPassword(d.getEmail(),d.getPassword());
     }
     public Task<Void> addDoctorData(Doctor d)
     {
@@ -31,6 +31,10 @@ public class DAODoctor {
     {
         return db.collection("Doctor").document(d.getId()).set(d);
     }
+//    public Task<Void> removeDoctorApp(String appId)
+//    {
+//        return db.collection("Doctor").whereEqualTo("app_list")
+//    }
     public Task<QuerySnapshot> getDoctor(String id)
     {
         return db.collection("Doctor").whereEqualTo("id", id).get();

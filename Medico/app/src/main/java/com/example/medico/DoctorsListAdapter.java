@@ -174,10 +174,14 @@ public class DoctorsListAdapter extends ArrayAdapter<Doctor> implements Filterab
     {
         String patId = curr_patient.getId();
         String docId = doctor.getId();
+        String docName = doctor.getName();
+        String docSpec = doctor.getSpecialization();
+        String docContact = doctor.getContact();
+        //temporary data that will be taken from the user later on
         String date = "24/12/21";
         String time = "12:45pm";
         String id = "a1";
-        Appointment a = new Appointment(id,date,time,docId,patId);
+        Appointment a = new Appointment(id,date,time,docId,patId,docName,docSpec,docContact);
         DAOAppointment daoAppointment = new DAOAppointment();
         //here one row will be added to the appointment class
         daoAppointment.addAppointmentData(a).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {

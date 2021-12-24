@@ -7,13 +7,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -21,10 +25,16 @@ import java.util.List;
 
 public class AppointmentListAdapter extends ArrayAdapter<Appointment> {
     private ArrayList<Appointment> appointments;
+    private ArrayList<Doctor> doctors;
+    private Doctor mainDoc = new Doctor();
+    FirebaseFirestore db;
+    Patient current_patient;
 
-    public AppointmentListAdapter(Context context, ArrayList<Appointment> appointments){
+    public AppointmentListAdapter(Context context, ArrayList<Appointment> appointments,ArrayList<Doctor> doctors,Patient current_patient){
         super(context,0,appointments);
         this.appointments = appointments;
+        this.doctors = doctors;
+        this.current_patient = current_patient;
     }
 
 
@@ -34,21 +44,12 @@ public class AppointmentListAdapter extends ArrayAdapter<Appointment> {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.appointment_list_item,parent,false);
         }
-        String docId = appointment.getDocId();
-       // Doctor doctor = getDoctor(docId);
-
-        Doctor doctor = new Doctor();
-        doctor.setId("d3");
-        doctor.setSpecialization("Skin Specialist");
-        doctor.setContact("03009876543");
-        doctor.setName("ali");
-        doctor.setLocation("Multan");
 
         TextView name = (TextView) convertView.findViewById(R.id.appt_doctor_name);
-        name.setText(doctor.getName());
+        name.setText(appointment.getDocName());
 
         TextView specialization = (TextView) convertView.findViewById(R.id.appt_doctor_specialization);
-        specialization.setText(doctor.getSpecialization());
+        specialization.setText(appointment.getDocSpec());
 
         TextView appt_date = (TextView) convertView.findViewById(R.id.appt_date);
         appt_date.setText(appointment.getDate());
@@ -56,7 +57,7 @@ public class AppointmentListAdapter extends ArrayAdapter<Appointment> {
         TextView appt_time = (TextView) convertView.findViewById(R.id.appt_time);
         appt_time.setText(appointment.getTime());
 
-        String phone_number = doctor.getContact();
+        String phone_number = appointment.getDocContact();
 
         ImageView call_doctor = (ImageView) convertView.findViewById(R.id.call_doctor);
         call_doctor.setOnClickListener(new View.OnClickListener() {
@@ -80,25 +81,34 @@ public class AppointmentListAdapter extends ArrayAdapter<Appointment> {
                     getContext().startActivity(intent);
             }
         });
+        ImageView cancel = (ImageView) convertView.findViewById(R.id.cancel_appointment_patient);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //remove appointment from doctor from patient and from appointments
+                db = FirebaseFirestore.getInstance();
+                CollectionReference itemsRef = db.collection("Appointment");
+                db.collection("Appointment").whereEqualTo("id",appointment.getId()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()){
+                            for(DocumentSnapshot doc: task.getResult()){
+                                itemsRef.document(doc.getId()).delete();
+                            }
+                        }
+                        notifyDataSetChanged();
+                    }
+                });
+            }
+        });
 
         return convertView;
     }
 
-    public Doctor getDoctor(String id)
+    public void removeApp(String appId)
     {
-        final Doctor[] d = new Doctor[1];
-        DAODoctor daoDoctor = new DAODoctor();
-        daoDoctor.getDoctor(id).addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-                for (DocumentSnapshot ds : list) {
-                    d[0] = ds.toObject(Doctor.class);
-                }
 
-            }
-        });
-        return d[0];
+
     }
 
 }

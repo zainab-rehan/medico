@@ -13,7 +13,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -24,10 +26,11 @@ import java.util.List;
 public class PatientAppointmentsFragment extends Fragment {
     ListView appointmentListView;
     ArrayList<Appointment> appointments;
+    ArrayList<Doctor> doctors;
     AppointmentListAdapter adapter;
     Patient current_patient;
-    FirebaseFirestore db;
     DAOAppointment daoAppointment;
+    DAODoctor daoDoctor;
 
     @androidx.annotation.Nullable
     @Override
@@ -35,8 +38,11 @@ public class PatientAppointmentsFragment extends Fragment {
         View view = inflater.inflate(R.layout.appointments_fragment,container,false);
         Bundle bundle = this.getArguments();
         appointments =  new ArrayList<Appointment>();
+        doctors = new ArrayList<Doctor>();
         current_patient = (Patient) bundle.getSerializable("patient");
         appointmentListView = (ListView) view.findViewById(R.id.AppointmentsListView) ;
+        adapter = new AppointmentListAdapter(getActivity(), appointments,doctors,current_patient);
+        appointmentListView.setAdapter(adapter);
 
         //loading appointments data from the database of this patient
         daoAppointment = new DAOAppointment();
@@ -52,13 +58,12 @@ public class PatientAppointmentsFragment extends Fragment {
             }
         });
 
-        Appointment a = new Appointment();
-        a.setAppointment("a2","24/12/2021","3:00pm","d3","P1");
-        appointments.add(a);
-        adapter = new AppointmentListAdapter(getActivity(), appointments);
-        appointmentListView.setAdapter(adapter);
-
         return view;
     }
+    void getDoc(String id)
+    {
+
+    }
+
 
 }

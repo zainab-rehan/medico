@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.database.annotations.NotNull;
 
 public class SignupDocActivity extends AppCompatActivity {
@@ -37,23 +38,29 @@ public class SignupDocActivity extends AppCompatActivity {
                 Doctor d = new Doctor(email.getText().toString(), userId.getText().toString(), name.getText().toString(),password.getText().toString(),
                         spec.getText().toString(),location.getText().toString(),contact.getText().toString());
                 daoDoctor = new DAODoctor();
-                daoDoctor.addDoctorData(d).addOnCompleteListener(new OnCompleteListener<Void>() {
+                daoDoctor.addDoctor(d).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull @NotNull Task<Void> task) {
-                        if (task.isSuccessful())
-                        {
-                            Toast.makeText(SignupDocActivity.this,"Signup Complete!",Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent();
-                            setResult(RESULT_OK,intent);
-                            SignupDocActivity.this.onBackPressed();
-                        }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull @NotNull Exception e) {
-                        Toast.makeText(SignupDocActivity.this,"Signup Failed!",Toast.LENGTH_SHORT).show();
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        daoDoctor.addDoctorData(d).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull @NotNull Task<Void> task) {
+                                if (task.isSuccessful())
+                                {
+                                    Toast.makeText(SignupDocActivity.this,"Signup Complete!",Toast.LENGTH_SHORT).show();
+                                    Intent intent=new Intent();
+                                    setResult(RESULT_OK,intent);
+                                    SignupDocActivity.this.onBackPressed();
+                                }
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull @NotNull Exception e) {
+                                Toast.makeText(SignupDocActivity.this,"Signup Failed!",Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 });
+
             }
         });
 

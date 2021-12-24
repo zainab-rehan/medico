@@ -42,11 +42,15 @@ public class DAOAppointment {
         map.put("time", a.getTime());
         map.put("docId", a.getDocId());
         map.put("patId", a.getPatId());
+        map.put("docName",a.getDocName());
+        map.put("docSpec",a.getDocSpec());
+        map.put("docContact",a.getDocContact());
 
-        return db.collection("Appointment").add(map).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        return db.collection("Appointment").add(a).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
-                a.setId( documentReference.getId());
+                //a.setId( documentReference.getId());
+                a.setId(a.getId());
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -54,11 +58,16 @@ public class DAOAppointment {
                 Log.w("Appointment Add Error", "Error adding appointment", e);
             }
         });
+        //return db.collection("Appointment").document(a.getId()).set(a);
+    }
+    public Task<Void> addAppData(Appointment a)
+    {
+        return db.collection("Appointment").document(a.getId()).set(a);
     }
 
     public Task<QuerySnapshot> getAppPat(String id)
     {
-        return db.collection("Appointment").whereEqualTo("id", id).get();
+        return db.collection("Appointment").whereEqualTo("patId", id).get();
     }
 
 }

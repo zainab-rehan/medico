@@ -21,9 +21,9 @@ public class DAOSignin {
         mAuth = FirebaseAuth.getInstance();
     }
 
-    public Task<AuthResult> authenticate(String userId, String password)
+    public Task<AuthResult> authenticate(String email, String password)
     {
-        return mAuth.signInWithEmailAndPassword(userId,password);
+        return mAuth.signInWithEmailAndPassword(email,password);
     }
 
     public String getCurrentUser()
@@ -33,11 +33,11 @@ public class DAOSignin {
 
     public Task<QuerySnapshot> checkPatient()
     {
-        return db.collection("Patient").whereEqualTo("userId",getCurrentUser()).get();
+        return db.collection("Patient").whereEqualTo("email",getCurrentUser()).get();
     }
 
     public Task<QuerySnapshot> checkDoctor()
     {
-        return db.collection("Doctor").whereEqualTo("userId",getCurrentUser()).get();
+        return db.collection("Doctor").whereEqualTo("email",getCurrentUser()).get();
     }
 }
