@@ -35,7 +35,14 @@ public class AppointmentListAdapter extends ArrayAdapter<Appointment> {
             convertView = inflater.inflate(R.layout.appointment_list_item,parent,false);
         }
         String docId = appointment.getDocId();
-        Doctor doctor = getDoctor(docId);
+       // Doctor doctor = getDoctor(docId);
+
+        Doctor doctor = new Doctor();
+        doctor.setId("d3");
+        doctor.setSpecialization("Skin Specialist");
+        doctor.setContact("03009876543");
+        doctor.setName("ali");
+        doctor.setLocation("Multan");
 
         TextView name = (TextView) convertView.findViewById(R.id.appt_doctor_name);
         name.setText(doctor.getName());

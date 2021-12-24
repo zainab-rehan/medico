@@ -34,11 +34,9 @@ public class PatientAppointmentsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @androidx.annotation.Nullable ViewGroup container, @androidx.annotation.Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.appointments_fragment,container,false);
         Bundle bundle = this.getArguments();
-
+        appointments =  new ArrayList<Appointment>();
         current_patient = (Patient) bundle.getSerializable("patient");
         appointmentListView = (ListView) view.findViewById(R.id.AppointmentsListView) ;
-        adapter = new AppointmentListAdapter(getActivity(), appointments);
-        appointmentListView.setAdapter(adapter);
 
         //loading appointments data from the database of this patient
         daoAppointment = new DAOAppointment();
@@ -54,6 +52,11 @@ public class PatientAppointmentsFragment extends Fragment {
             }
         });
 
+        Appointment a = new Appointment();
+        a.setAppointment("a2","24/12/2021","3:00pm","d3","P1");
+        appointments.add(a);
+        adapter = new AppointmentListAdapter(getActivity(), appointments);
+        appointmentListView.setAdapter(adapter);
 
         return view;
     }
