@@ -15,7 +15,7 @@
         android:layout_width="273dp"
         android:layout_height="50dp"
         android:layout_marginStart="68dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="144dp"
         android:text="Add History"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,8 +24,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="393dp"
-        android:layout_height="531dp"
+        android:layout_width="395dp"
+        android:layout_height="390dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -33,8 +33,7 @@
 
         <RelativeLayout
             android:layout_width="127dp"
-            android:layout_height="wrap_content"
-            android:translationY="-220dp">
+            android:layout_height="wrap_content">
 
 
             <TextView
@@ -49,17 +48,44 @@
 
         </RelativeLayout>
 
-        <EditText
+        <TextView
             android:id="@+id/history_input"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
-
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/historytag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="History Item:"
+        android:textColor="#2A628C"
+        android:textSize="9pt"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="9dp">
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/new_history_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:hint="@string/history_item"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintLeft_toRightOf="@id/historytag"
+        app:layout_constraintStart_toEndOf="@+id/historytag"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        tools:ignore="MissingConstraints">
+
+    </EditText>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

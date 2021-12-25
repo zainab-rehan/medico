@@ -11,9 +11,12 @@ public class Appointment {
     private String docName;
     private String docSpec;
     private String docContact;
+    private String patName;
+    private String patContact;
 
     public Appointment(){}
-    public Appointment(String id, String date, String time, String docId, String patId,String docName,String docSpec, String docContact)
+    public Appointment(String id, String date, String time, String docId, String patId,String docName,
+                       String docSpec, String docContact, String patName, String patContact)
     {
         this.id = id;
         this.date = date;
@@ -23,17 +26,24 @@ public class Appointment {
         this.docName = docName;
         this.docSpec = docSpec;
         this.docContact = docContact;
+        this.patName  = patName;
+        this.patContact = patContact;
     }
-    public void setAppointment(String id, String date, String time, String docId, String patId,String docName,String docSpec, String docContact)
-    {
-        this.id = id;
-        this.date = date;
-        this.time = time;
-        this.docId = docId;
-        this.patId = patId;
-        this.docName = docName;
-        this.docSpec = docSpec;
-        this.docContact = docContact;
+
+    public String getPatName() {
+        return patName;
+    }
+
+    public void setPatName(String patName) {
+        this.patName = patName;
+    }
+
+    public String getPatContact() {
+        return patContact;
+    }
+
+    public void setPatContact(String patContact) {
+        this.patContact = patContact;
     }
 
     //getters

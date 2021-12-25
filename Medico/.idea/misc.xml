@@ -9,11 +9,14 @@
         <entry key="..\:/FAST/SEMESTER-7/SMD-A/Project/Medico/app/src/main/res/drawable/layout_bg.xml" value="0.2203125" />
         <entry key="..\:/FAST/SEMESTER-7/SMD-A/Project/Medico/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/FAST/SEMESTER-7/SMD-A/Project/Medico/app/src/main/res/layout/sign_up.xml" value="0.21" />
+        <entry key="..\:/FAST/SEMESTER-7/SMD-A/Project/Medico/medico/Medico/app/src/main/res/layout/activity_doctor.xml" value="0.18704710144927536" />
         <entry key="..\:/FAST/SEMESTER-7/SMD-A/Project/Medico/medico/Medico/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
         <entry key="..\:/FAST/SEMESTER-7/SMD-A/Project/Medico/medico/Medico/app/src/main/res/layout/activity_patient.xml" value="0.17481884057971014" />
         <entry key="..\:/FAST/SEMESTER-7/SMD-A/Project/Medico/medico/Medico/app/src/main/res/layout/appointment_list_item.xml" value="0.20416666666666666" />
         <entry key="..\:/FAST/SEMESTER-7/SMD-A/Project/Medico/medico/Medico/app/src/main/res/layout/appointments_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/FAST/SEMESTER-7/SMD-A/Project/Medico/medico/Medico/app/src/main/res/layout/book_appointment_popup.xml" value="0.18704710144927536" />
         <entry key="..\:/FAST/SEMESTER-7/SMD-A/Project/Medico/medico/Medico/app/src/main/res/layout/doctor_list_item.xml" value="0.33" />
+        <entry key="..\:/FAST/SEMESTER-7/SMD-A/Project/Medico/medico/Medico/app/src/main/res/layout/doctor_search_fragment.xml" value="0.18704710144927536" />
         <entry key="..\:/FAST/SEMESTER-7/SMD-A/Project/Medico/medico/Medico/app/src/main/res/layout/patient_feed_fragment.xml" value="0.16666666666666666" />
         <entry key="..\:/FAST/SEMESTER-7/SMD-A/Project/Medico/medico/Medico/app/src/main/res/layout/patient_history_fragment.xml" value="0.17481884057971014" />
         <entry key="..\:/FAST/SEMESTER-7/SMD-A/Project/Medico/medico/Medico/app/src/main/res/layout/patient_list_item.xml" value="0.5" />

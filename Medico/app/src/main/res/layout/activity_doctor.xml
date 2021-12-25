@@ -85,7 +85,7 @@
                     android:layout_marginLeft="10dp">
 
                     <TextView
-                        android:id="@+id/patient_profile_name"
+                        android:id="@+id/doctor_profile_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -95,7 +95,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/patient_profile_age"
+                        android:id="@+id/doctor_profile_spec"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -104,7 +104,7 @@
                         android:textSize="7pt" />
 
                     <RadioGroup
-                        android:id="@+id/status"
+                        android:id="@+id/doctor_availability"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="80dp">

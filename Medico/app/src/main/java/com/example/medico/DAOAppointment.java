@@ -45,6 +45,9 @@ public class DAOAppointment {
         map.put("docName",a.getDocName());
         map.put("docSpec",a.getDocSpec());
         map.put("docContact",a.getDocContact());
+        map.put("patName",a.getPatName());
+        map.put("patContact",a.getPatContact());
+
 
         return db.collection("Appointment").add(a).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
@@ -69,5 +72,15 @@ public class DAOAppointment {
     {
         return db.collection("Appointment").whereEqualTo("patId", id).get();
     }
+    public Task<QuerySnapshot> getAppDoc(String id)
+    {
+        return db.collection("Appointment").whereEqualTo("docId", id).get();
+    }
+    public Task<QuerySnapshot> delApp(String id)
+    {
+        return db.collection("Appointment").whereEqualTo("id", id).get();
+    }
+
+
 
 }

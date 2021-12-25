@@ -11,7 +11,6 @@ public class Doctor implements Serializable {
     private String location;
     private String password;
     private String specialization;
-    private ArrayList<Appointment> app_list;
     private String availability;
 
     private void init(){}
@@ -24,7 +23,6 @@ public class Doctor implements Serializable {
         this.specialization = specialization;
         this.location = location;
         this.contact = contact;
-        this.app_list = new ArrayList<Appointment>();
         this.availability = "Available";
     }
 
@@ -37,7 +35,6 @@ public class Doctor implements Serializable {
     public String getContact() { return contact; }
     public String getLocation() { return location; }
     public String getAvailability() { return availability; }
-    public ArrayList<Appointment> getApp_list(){return this.app_list;}
 
 
     //setters
@@ -58,19 +55,6 @@ public class Doctor implements Serializable {
     public void setContact(String contact) {
         this.contact = contact;
     }
-    public void setApp_list(ArrayList<Appointment> app_list)
-    {
-        if(this.app_list == null){
-            this.app_list = new ArrayList<Appointment>();
-        }
-        this.app_list = app_list;
-    }
-    public void addApp(Appointment a)
-    {
-        if(this.app_list == null){
-            this.app_list = new ArrayList<Appointment>();
-        }
-        this.app_list.add(a);
-    }
+
 
 }

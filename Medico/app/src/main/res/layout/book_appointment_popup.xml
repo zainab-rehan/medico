@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+
+    <Button
+        android:id="@+id/book_appointment_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Book Appointment"
+        android:layout_marginTop="50dp"></Button>
+
+    <EditText
+        android:id="@+id/book_appointment_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="120dp"
+        android:hint="Time"
+        tools:ignore="TouchTargetSizeCheck">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/book_appointment_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Date"
+        tools:ignore="TouchTargetSizeCheck">
+
+    </EditText>
+</RelativeLayout>

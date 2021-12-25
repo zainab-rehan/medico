@@ -13,11 +13,12 @@
             android:hint="Search"></EditText>
 
         <ListView
+            android:id="@+id/search_doctorlistview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/search_doctorlistview"
+            android:layout_below="@+id/search_doctor"
             android:layout_alignBaseline="@id/search_doctor"
-            android:layout_alignTop="@id/search_doctor">
+            android:layout_marginTop="-28dp">
 
         </ListView>
     </RelativeLayout>

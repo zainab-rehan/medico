@@ -172,45 +172,17 @@ public class DoctorsListAdapter extends ArrayAdapter<Doctor> implements Filterab
 
     public void addAppointment(Doctor doctor)
     {
-        String patId = curr_patient.getId();
-        String docId = doctor.getId();
-        String docName = doctor.getName();
-        String docSpec = doctor.getSpecialization();
-        String docContact = doctor.getContact();
         //temporary data that will be taken from the user later on
         String date = "24/12/21";
         String time = "12:45pm";
         String id = "a1";
-        Appointment a = new Appointment(id,date,time,docId,patId,docName,docSpec,docContact);
+        Appointment a = new Appointment(id,date,time,doctor.getId(),curr_patient.getId(),
+                doctor.getName(),doctor.getSpecialization(),doctor.getContact(),curr_patient.getName(),curr_patient.getContact());
         DAOAppointment daoAppointment = new DAOAppointment();
         //here one row will be added to the appointment class
         daoAppointment.addAppointmentData(a).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
-                //one appointment will be added to the app_list of the doctor as well as the patient
-                doctor.addApp(a);
-                curr_patient.addApp(a);
-                DAODoctor daoDoctor = new DAODoctor();
-                daoDoctor.addDoctorApp(doctor).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Toast toast = new Toast(getContext());
-                        toast.setText("Doctor Appointment list updated!!");
-                        toast.show();
-
-                    }
-                });
-
-                DAOPatient daoPatient = new DAOPatient();
-                daoPatient.addPatientApp(curr_patient).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Toast toast = new Toast(getContext());
-                        toast.setText("Patient Appointment list updated!!");
-                        toast.show();
-
-                    }
-                });
                 Toast toast = new Toast(getContext());
                 toast.setText("Appointment added!");
                 toast.show();

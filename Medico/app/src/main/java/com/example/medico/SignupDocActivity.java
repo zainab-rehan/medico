@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.database.annotations.NotNull;
+import com.google.firebase.firestore.DocumentReference;
 
 public class SignupDocActivity extends AppCompatActivity {
     private DAODoctor daoDoctor;
@@ -41,6 +42,23 @@ public class SignupDocActivity extends AppCompatActivity {
                 daoDoctor.addDoctor(d).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+//                        daoDoctor.addDoc(d).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<DocumentReference> task) {
+//                                if (task.isSuccessful())
+//                                {
+//                                    Toast.makeText(SignupDocActivity.this,"Signup Complete!",Toast.LENGTH_SHORT).show();
+//                                    Intent intent=new Intent();
+//                                    setResult(RESULT_OK,intent);
+//                                    SignupDocActivity.this.onBackPressed();
+//                                }
+//                            }
+//                        }).addOnFailureListener(new OnFailureListener() {
+//                            @Override
+//                            public void onFailure(@NonNull @NotNull Exception e) {
+//                                Toast.makeText(SignupDocActivity.this,"Signup Failed!",Toast.LENGTH_SHORT).show();
+//                            }
+//                       });
                         daoDoctor.addDoctorData(d).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull @NotNull Task<Void> task) {

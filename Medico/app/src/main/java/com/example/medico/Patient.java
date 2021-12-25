@@ -11,8 +11,6 @@ public class Patient implements Serializable {
     private String contact;
     private String password;
     private String gender;
-    private ArrayList<String> history;
-    private ArrayList<Appointment> app_list;
 
     private void init(){}
     public Patient(){}
@@ -24,8 +22,6 @@ public class Patient implements Serializable {
         this.age = age;
         this.contact = contact;
         this.gender = gender;
-        this.history = new ArrayList<String>();
-        this.app_list = new ArrayList<Appointment>(0);
 
     }
 
@@ -34,8 +30,6 @@ public class Patient implements Serializable {
     public String getId(){ return this.id;}
     public String getName(){return this.name;}
     public String getPassword(){return this.password;}
-    public ArrayList<String> getHistory(){return this.history;}
-    public ArrayList<Appointment> getApp_list(){return this.app_list;}
     public String getAge() {
         return age;
     }
@@ -62,30 +56,5 @@ public class Patient implements Serializable {
         this.gender = gender;
     }
 
-    public void setHistory(ArrayList<String> history){
-        if(this.history == null){
-            this.history = new ArrayList<String>();
-        }
-        this.history = history;
-    }
 
-    //additional functions
-    public void addHistory(String history){
-        this.history = new ArrayList<>();
-        this.history.add(history);
-    }
-    public void setApp_list(ArrayList<Appointment> app_list)
-    {
-        if(this.app_list == null){
-            this.app_list = new ArrayList<Appointment>();
-        }
-        this.app_list = app_list;
-    }
-    public void addApp(Appointment a)
-    {
-        if(this.app_list == null){
-            this.app_list = new ArrayList<Appointment>();
-        }
-        this.app_list.add(a);
-    }
 }

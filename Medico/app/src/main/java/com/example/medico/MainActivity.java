@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                             if(doctor!=null)
                             {
                                 Intent i=new Intent(MainActivity.this, DoctorActivity.class);
-                                i.putExtra("doctor", (Parcelable) doctor);
+                                i.putExtra("doctor",  doctor);
                                 startActivity(i);
                             }
                         }
