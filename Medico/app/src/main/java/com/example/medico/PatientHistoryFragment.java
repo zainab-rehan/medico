@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -28,7 +29,10 @@ public class PatientHistoryFragment extends Fragment {
     ArrayList<String> history;
     Button add_history;
     EditText new_history_item;
+    TextView old_history_item;
     TextView patient_history;
+    History current_History;
+    ArrayList<History> allHistories = new ArrayList<History>();
 
     @androidx.annotation.Nullable
     @Override
@@ -40,9 +44,13 @@ public class PatientHistoryFragment extends Fragment {
 
         add_history = (Button) view.findViewById(R.id.add_history);
         new_history_item = (EditText) view.findViewById(R.id.new_history_item);
+        old_history_item = (TextView) view.findViewById(R.id.old_history);
         patient_history = (TextView) view.findViewById(R.id.history_input);
 
         //loading already saved history from the database
+        current_History = new History();
+        current_History.setId(current_patient.getId()+"H");
+        current_History.setPatId(current_patient.getId());
         daoHistory = new DAOHistory();
         daoHistory.retrieveHistory(current_patient.getId()).addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -52,17 +60,17 @@ public class PatientHistoryFragment extends Fragment {
                     for(DocumentSnapshot d : task.getResult())
                     {
                         History h = d.toObject(History.class);
-                        history.add(h.getHistory());
+                        current_History = h;
+                        allHistories.add(h);
+                        old_history_item.setText(h.getHistory());
                     }
                 }
             }
         });
 
+
+
         //adding new history to the database
-
-        //saving history item after add history button click (to database)
-        //history = current_patient.getHistory();
-
         add_history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,13 +85,15 @@ public class PatientHistoryFragment extends Fragment {
                 //dispalying history in text view
                 patient_history.setText(entire_history_list);
                 History newHis = new History();
-                newHis.setId(current_patient.getId()+"H");
+                newHis.setId(current_patient.getId()+entire_history_list.charAt(0));
                 newHis.setPatId(current_patient.getId());
                 newHis.setHistory(entire_history_list);
                 daoHistory.addHistory(newHis).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-
+                        Toast toast = new Toast(getContext());
+                        toast.setText("History added!");
+                        toast.show();
                     }
                 });
             }

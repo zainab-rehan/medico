@@ -30,7 +30,6 @@ public class PatientAppointmentsFragment extends Fragment {
     AppointmentListAdapter adapter;
     Patient current_patient;
     DAOAppointment daoAppointment;
-    DAODoctor daoDoctor;
 
     @androidx.annotation.Nullable
     @Override
@@ -60,10 +59,4 @@ public class PatientAppointmentsFragment extends Fragment {
 
         return view;
     }
-    void getDoc(String id)
-    {
-
-    }
-
-
 }

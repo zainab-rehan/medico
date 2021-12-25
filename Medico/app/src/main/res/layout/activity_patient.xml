@@ -7,19 +7,22 @@
     tools:context=".PatientActivity">
 
     <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/fragment_container"
         app:layout_constraintBottom_toTopOf="@id/bottomnavigationbar">
 
     </FrameLayout>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomnavigationbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
+        android:background="#B8CCC4"
+        android:backgroundTint="#77b0b4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/patient_menu"
-        android:id="@+id/bottomnavigationbar">
+        tools:ignore="MissingConstraints">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 </androidx.constraintlayout.widget.ConstraintLayout>

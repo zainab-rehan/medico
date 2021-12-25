@@ -16,13 +16,14 @@
         android:paddingRight="12dp"
         android:paddingLeft="12dp"
         android:textColor="@android:color/white"
-        android:textSize="13pt" />
+        android:textSize="13pt"
+        android:contentDescription="TODO" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:paddingRight="15dp"
-        android:paddingLeft="5dp">
+        android:paddingEnd="15dp"
+        android:paddingStart="5dp">
 
         <ImageView
             android:layout_width="15dp"
@@ -61,7 +62,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:hint="patient name"
             android:textColor="#2A628C"
             android:textSize="8pt"
             android:textStyle="bold" />
@@ -73,7 +73,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
-            android:hint="appt date"
             android:textSize="6pt" />
 
         <TextView
@@ -81,7 +80,6 @@
             android:layout_width="174dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:hint="appt time"
             android:layout_marginTop="60dp"
             android:textSize="6pt" />
 
@@ -112,7 +110,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="15dp"
                 android:text="Cancel Appointment"
-                android:textSize="14dp"></TextView>
+                android:textSize="14sp"></TextView>
 
         </LinearLayout>
 
@@ -126,7 +124,8 @@
                 android:layout_height="20dp"
                 android:layout_marginTop="50dp"
                 android:gravity="center"
-                android:src="@drawable/ic_outline_call_24">
+                android:src="@drawable/ic_outline_call_24"
+                android:contentDescription="TODO">
 
             </ImageView>
 
@@ -136,7 +135,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="50dp"
                 android:text="Call"
-                android:textSize="14dp"></TextView>
+                android:textSize="14sp"></TextView>
         </LinearLayout>
 
         <LinearLayout
@@ -157,7 +156,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="85dp"
                 android:text="Message"
-                android:textSize="14dp"></TextView>
+                android:textSize="14sp"></TextView>
         </LinearLayout>
 
     </RelativeLayout>

@@ -26,7 +26,6 @@ import java.util.List;
 public class AppointmentListAdapter extends ArrayAdapter<Appointment> {
     private ArrayList<Appointment> appointments;
     private ArrayList<Doctor> doctors;
-    private Doctor mainDoc = new Doctor();
     FirebaseFirestore db;
     Patient current_patient;
 
@@ -103,12 +102,6 @@ public class AppointmentListAdapter extends ArrayAdapter<Appointment> {
         });
 
         return convertView;
-    }
-
-    public void removeApp(String appId)
-    {
-
-
     }
 
 }

@@ -12,7 +12,7 @@
     </item>
     <item
         android:id="@+id/patient_appointments"
-        android:icon="@drawable/ic_outline_history_24"
+        android:icon="@drawable/ic_baseline_access_time_24"
         android:title="Appointments">
     </item>
     <item

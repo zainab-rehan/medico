@@ -1,5 +1,6 @@
 package com.example.medico;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
@@ -117,7 +119,23 @@ public class DoctorsListAdapter extends ArrayAdapter<Doctor> implements Filterab
             public void onClick(View v) {
                 if(availability.getText().equals("Available") == true)
                 {
-                    addAppointment(doctor);
+                    Dialog dialog = new Dialog(getContext());
+                    dialog.setContentView(R.layout.book_appointment_popup);
+                    // dialog.getWindow().setBackgroundDrawableResource(R.layout);
+                    dialog.show();
+
+                    Button bookappt = (Button) dialog.findViewById(R.id.book_appointment_button);
+                    EditText date = (EditText) dialog.findViewById(R.id.book_appointment_date);
+                    EditText time = (EditText) dialog.findViewById(R.id.book_appointment_time);
+                    bookappt.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            addAppointment(doctor,date.getText().toString(),time.getText().toString());
+                            dialog.dismiss();
+                        }
+                    });
+
+                    //addAppointment(doctor);
                 }
                 else if(availability.getText().equals("Not Available") == true)
                 {
@@ -170,12 +188,12 @@ public class DoctorsListAdapter extends ArrayAdapter<Doctor> implements Filterab
         }
     }
 
-    public void addAppointment(Doctor doctor)
+    public void addAppointment(Doctor doctor, String date, String time)
     {
         //temporary data that will be taken from the user later on
-        String date = "24/12/21";
-        String time = "12:45pm";
-        String id = "a1";
+        String d = "24/12/21";
+        String t = "12:45pm";
+        String id = doctor.getId()+curr_patient.getId();
         Appointment a = new Appointment(id,date,time,doctor.getId(),curr_patient.getId(),
                 doctor.getName(),doctor.getSpecialization(),doctor.getContact(),curr_patient.getName(),curr_patient.getContact());
         DAOAppointment daoAppointment = new DAOAppointment();

@@ -8,12 +8,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 public class DAOHistory {
     private final FirebaseFirestore db;
-    private final FirebaseAuth mAuth;
 
     public DAOHistory()
     {
         db= FirebaseFirestore.getInstance();
-        mAuth = FirebaseAuth.getInstance();
     }
 
     public Task<Void> addHistory(History h)
