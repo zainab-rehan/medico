@@ -191,8 +191,6 @@ public class DoctorsListAdapter extends ArrayAdapter<Doctor> implements Filterab
     public void addAppointment(Doctor doctor, String date, String time)
     {
         //temporary data that will be taken from the user later on
-        String d = "24/12/21";
-        String t = "12:45pm";
         String id = doctor.getId()+curr_patient.getId();
         Appointment a = new Appointment(id,date,time,doctor.getId(),curr_patient.getId(),
                 doctor.getName(),doctor.getSpecialization(),doctor.getContact(),curr_patient.getName(),curr_patient.getContact());

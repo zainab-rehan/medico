@@ -3,16 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:ignore="MissingDefaultResource">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/patient_profile_layout"
+            android:layout_width="223dp"
+            android:layout_height="match_parent"
             tools:ignore="MissingConstraints">
 
             <TextView
@@ -27,28 +28,32 @@
                 android:textSize="50sp"
                 android:textStyle="bold"></TextView>>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="351dp"
                 android:layout_marginTop="60dp"
                 android:background="@drawable/layout_bg"
                 android:backgroundTint="#77b0b4">
 
                 <ImageView
                     android:id="@+id/doctor_image"
-                    android:layout_width="83dp"
-                    android:layout_height="85dp"
-                    android:layout_gravity="center"
+                    android:layout_width="77dp"
+                    android:layout_height="72dp"
                     android:layout_marginLeft="20dp"
-                    android:gravity="center"
-                    android:src="@drawable/patient_face"
                     android:textColor="@android:color/white"
                     android:textSize="13pt" />
 
                 <RelativeLayout
-                    android:layout_width="77dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="50dp">
+                    android:id="@+id/fields"
+                    android:layout_width="83dp"
+                    android:layout_height="126dp"
+                    android:layout_below="@+id/doctor_image"
+                    android:layout_marginStart="-81dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="22dp"
+                    android:layout_marginRight="-99dp"
+                    android:layout_toLeftOf="@+id/user_info_fields"
+                    android:layout_toEndOf="@+id/doctor_image">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -80,15 +85,19 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
+                    android:id="@+id/user_info_fields"
+                    android:layout_width="106dp"
+                    android:layout_height="123dp"
+                    android:layout_marginTop="100dp"
+                    android:layout_toEndOf="@+id/doctor_image"
+                    android:layout_toRightOf="@+id/fields">
 
                     <TextView
                         android:id="@+id/patient_profile_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="15dp"
                         android:textColor="@color/white"
                         android:textSize="8pt"
                         android:textStyle="bold" />
@@ -107,11 +116,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="80dp"
+                        android:layout_marginTop="75dp"
                         android:textColor="@color/white"
                         android:textSize="7pt" />
                 </RelativeLayout>
-            </LinearLayout>
+            </RelativeLayout>
 
         </RelativeLayout>
 
@@ -122,12 +131,11 @@
 
         <ListView
             android:id="@+id/DoctorListView"
-            android:layout_width="402dp"
-            android:layout_height="593dp"
-            android:layout_below="@+id/patient_profile_layout"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="493dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
             android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/patient_profile_layout"
             android:divider="@android:color/transparent"
             android:dividerHeight="10.0sp" />
     </RelativeLayout>

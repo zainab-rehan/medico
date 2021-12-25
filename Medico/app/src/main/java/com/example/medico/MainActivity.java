@@ -2,7 +2,10 @@ package com.example.medico;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -28,11 +31,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //services
+        if (!foregroundServiceRunning()){
+            Intent serviceIntent = new Intent(this, Services.class);
+            ContextCompat.startForegroundService(getApplicationContext(),serviceIntent);
+        }
+
         Button signIn = findViewById(R.id.sign_in);
         Button signUpPat = findViewById(R.id.sign_up_pat);
         Button signUpDoc = findViewById(R.id.sign_up_doc);
         userEmail = findViewById(R.id.user_email_input);
         password = findViewById(R.id.password_input);
+
 
         //sign up patient
         signUpPat.setOnClickListener(new View.OnClickListener() {
@@ -107,5 +117,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public boolean foregroundServiceRunning(){
+        ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for(ActivityManager.RunningServiceInfo service: activityManager.getRunningServices(Integer.MAX_VALUE)){
+            if (Services.class.getName().equals(service.service.getClassName())){
+                return true;
+            }
+        }
+        return false;
     }
 }

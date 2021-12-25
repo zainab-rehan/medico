@@ -12,6 +12,23 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@id/bottomnavigationbar">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:outlineSpotShadowColor="@color/black"
+            android:textSize="8pt"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:text="Ads by Google"></TextView>
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:translationY="60dp"
+            app:adSize="BANNER"
+            app:adUnitId="ca-app-pub-6480095042442019~9083829747"></com.google.android.gms.ads.AdView>
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

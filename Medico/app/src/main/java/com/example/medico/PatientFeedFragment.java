@@ -1,11 +1,17 @@
 package com.example.medico;
 
+import static android.content.Context.LAYOUT_INFLATER_SERVICE;
+
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,18 +35,29 @@ public class PatientFeedFragment extends Fragment {
     Patient current_patient;
     FirebaseFirestore db;
 
-    public PatientFeedFragment(Patient p)
-    {
+    public PatientFeedFragment(Patient p) {
         current_patient = p;
     }
 
     @androidx.annotation.Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @androidx.annotation.Nullable ViewGroup container, @androidx.annotation.Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.patient_feed_fragment, container, false);
+
+        View view;
+
+        int orientation = getActivity().getResources().getConfiguration().orientation;
+        if(orientation == Configuration.ORIENTATION_LANDSCAPE)
+        {
+            view = inflater.inflate(R.layout.patient_feed_fragment_landscape, container, false);
+        }
+        else
+            view = inflater.inflate(R.layout.patient_feed_fragment, container, false);
+
         doctorListView = (ListView) view.findViewById(R.id.DoctorListView);
         doctors = new ArrayList<Doctor>();
         Bundle bundle = this.getArguments();
+
+
 
         current_patient = (Patient) bundle.getSerializable("patient");
 
@@ -71,6 +88,11 @@ public class PatientFeedFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
 }
 

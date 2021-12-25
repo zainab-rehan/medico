@@ -106,6 +106,11 @@ public class PatientHistoryFragment extends Fragment {
 
         patient_history.setText(entire_history_list);
 
+        add_history = (Button) view.findViewById(R.id.add_history);
+        new_history_item = (EditText) view.findViewById(R.id.new_history_item);
+        patient_history = (TextView) view.findViewById(R.id.history_input);
+
+
         //loading history data from the database
      /*   daoPatient.getHistory(current_patient.getId()).addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override

@@ -39,31 +39,31 @@ public class SignupPatActivity extends AppCompatActivity {
 
                 Patient p = new Patient(email.getText().toString(), userId.getText().toString(), name.getText().toString(),
                         password.getText().toString(), age.getText().toString(),contact.getText().toString(), gender.getText().toString());
-                    daoPatient = new DAOPatient();
-                    daoPatient.addPatient(p).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()){
-                                daoPatient.addPatientData(p).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull @NotNull Task<Void> task) {
-                                        if (task.isSuccessful())
-                                        {
-                                            Toast.makeText(SignupPatActivity.this,"Signup Complete!",Toast.LENGTH_SHORT).show();
-                                            Intent intent=new Intent();
-                                            setResult(RESULT_OK,intent);
-                                            SignupPatActivity.this.onBackPressed();
-                                        }
+                daoPatient = new DAOPatient();
+                daoPatient.addPatient(p).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            daoPatient.addPatientData(p).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull @NotNull Task<Void> task) {
+                                    if (task.isSuccessful())
+                                    {
+                                        Toast.makeText(SignupPatActivity.this,"Signup Complete!",Toast.LENGTH_SHORT).show();
+                                        Intent intent=new Intent();
+                                        setResult(RESULT_OK,intent);
+                                        SignupPatActivity.this.onBackPressed();
                                     }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull @NotNull Exception e) {
-                                        Toast.makeText(SignupPatActivity.this,"Signup Failed!",Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            }
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull @NotNull Exception e) {
+                                    Toast.makeText(SignupPatActivity.this,"Signup Failed!",Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
-                    });
+                    }
+                });
 
             }
         });
